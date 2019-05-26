@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kanban</title>
+    <meta name="author" content="Daria Zvyagintseva">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="body__columns columns">
+    <div class="column columns__column">
+        <div class="content column__content">
+            <header class="header content__header">Обещания на месяц</header>
+            <div class="card content__card">Я клянусь, что стану чище и добрее</div>
+            <div class="card content__card">И в беде не брошу друга никогда</div>
+            <div class="card content__card">Прекрасное далеко, не будь ко мне жестоко, не будь ко мне жестоко, жестоко
+                не будь. От чистого истока в прекрасное далеко, в прекрасное далеко я начинаю путь.
+            </div>
+        </div>
+        <div class="addCardField conlumn__addCardField">
+            <input type="text"  placeholder="Введите название карточки" class="addCardField__input">
+            <button class="addCardField__button">Добавить карточку</button>
+            <button class="addCardField__crossArea crossArea">
+                <img src="cross.png"
+                     alt="x"
+                     class="crossArea__img"
+                     width="15"
+                     height="15">
+            </button>
+        </div>
+        <button class="column__addButton addButton">
+            <img src="Vector.png"
+                 alt="+"
+                 class="addButton_img"
+                 width="15"
+                 height="15">
+            <div class="addButton__text">Добавить ещё одну карточку</div>
+        </button>
+    </div>
+    <div class="column columns__column">
+        <div class="content column__content">
+            <header class="header content__header">План на неделю</header>
+            <div class="card content__card">Быть счастливым</div>
+        </div>
+        <div class="addCardField conlumn__addCardField">
+            <input type="text" placeholder="Введите название карточки" class="addCardField__input">
+            <button class="addCardField__button">Добавить карточку</button>
+            <button class="addCardField__crossArea crossArea">
+                <img src="cross.png"
+                     alt="x"
+                     class="crossArea__img"
+                     width="15"
+                     height="15">
+            </button>
+        </div>
+        <button class="column__addButton addButton">
+            <img src="Vector.png"
+                 alt="+"
+                 class="addButton_img"
+                 width="15"
+                 height="15">
+            <div class="addButton__text">Добавить ещё одну карточку</div>
+        </button>
+    </div>
+    <div class="columns__column_new column_new">
+        <button class="column_new__addColumn addColumn">
+            <img src="Vector.png"
+                 alt="+"
+                 class="addColumn_img"
+                 width="15"
+                 height="15">
+            <div class="addColumn__text">Добавить ещё одну колонку</div>
+        </button>
+    </div>
+    <script type="text/javascript" src="DragAndDrop.js">
+    </script>
+    <script language="JavaScript" type="text/javascript">
+        var CNTCOL = 2;
+        var addButtons = document.getElementsByClassName("addButton");
+        // console.log(addButtons)
+        for (var i = 0; i < addButtons.length; i++) {
+            addButtons[i].onclick =
+                //addAction.bind.this
+                function () {
+                    this.style.display = "none";
+                    console.log(this.parentNode.previousElementSibling);
+                    this.previousElementSibling.style.display = "block";
+                }
+        }
+    </script>
+    <script language="JavaScript" type="text/javascript">
+        function newCardAdd(elem) {
+            elem.style.display = "none";
+            console.log(elem.parentNode.previousElementSibling);
+            elem.previousElementSibling.style.display = "block";
+        }
+
+        function newClose(elem) {
+            var addNew = elem.parentNode.nextElementSibling;
+            addNew.style.display = 'block';
+            var addField = elem.parentNode;
+            addField.style.display = 'none';
+            addField.firstElementChild.value = ''
+        }
+
+        function newFieldAdd(elem) {
+            const inputText = elem.previousElementSibling.value;
+            var newCard = document.createElement('div');
+            newCard.className = "card content__card";
+            newCard.innerHTML = inputText;
+
+            elem.parentNode.previousElementSibling.appendChild(newCard);
+
+            elem.parentNode.style.display = "none";
+            elem.previousElementSibling.value = '';
+            elem.parentNode.nextElementSibling.style.display = "block";
+        }
+
+        function f(elem) {
+        	console.log(elem)
+            const inputText = elem.previousElementSibling.value;
+            newContent = document.createElement('div');
+            newHeader = document.createElement('header');
+            newContent.className = "content column__content";
+            newHeader.className = "header content__header";
+            newHeader.innerHTML = inputText;
+            newContent.appendChild(newHeader);
+
+            col = elem.parentNode.parentNode;
+            col.innerHTML = "";
+            col.appendChild(newContent);
+
+            newField = document.createElement('div');
+            newField.className = "addCardField conlumn__addCardField";
+            newField.innerHTML = '<input type="text" placeholder="Введите название карточки" class="addCardField__input">';
+            newButton = document.createElement('button');
+            newButton.className = "addCardField__button";
+            newButton.innerHTML = "Добавить карточку";
+            newButton.setAttribute("onclick", "newFieldAdd(this)");
+            newField.appendChild(newButton);
+
+            newClose = document.createElement('button');
+            newClose.className = "addCardField__crossArea crossArea";
+            newClose.innerHTML = '<img src="cross.png"'
+                + ' alt="x"'
+                + ' class="crossArea__img"'
+                + ' width="15px"'
+                + ' height="15px">';
+
+            newClose.setAttribute("onclick", "newClose(this)");
+            newField.appendChild(newClose);
+
+            col.appendChild(newField);
+
+            newAddNewCard = document.createElement('button');
+            newAddNewCard.className = "column__addButton addButton";
+            newAddNewCard.innerHTML = '<img src="Vector.png"'
+                + 'alt="+" class="addButton_img" width="15px" height="15px">'
+                + '<div class="addButton__text">Добавить ещё одну карточку</div>';
+            newAddNewCard.setAttribute("onclick", "newCardAdd(this)");
+            col.appendChild(newAddNewCard)
+
+        }
+
+        function newUndoAdd(elem) {
+            var addField = elem.parentNode;
+            // console.log(addField)
+            console.log(elem);
+            console.log(addField);
+            addField.style.display = 'none';
+            addField.firstElementChild.value = ''
+        }
+
+        document.getElementsByClassName("addColumn")[0].onclick =
+            function () {
+                newCardField = document.createElement('div');
+                //addColumn__text;
+                newCardField.className = "column__addColField addColField";
+                newCol = document.createElement('div');
+                newCardField.innerHTML = '<input type="text" placeholder="Введите название колонки" class="addColField__input">';
+                newButton = document.createElement('button');
+                newButton.className = "addColField__button";
+                newButton.innerHTML = 'Добавить колонку';
+                newButton.setAttribute("onclick", "f(this)");
+                newCardField.appendChild(newButton);
+
+                newClose = document.createElement('button');
+                newClose.className = "addColField__crossArea crossArea";
+                newClose.innerHTML = '<img src="cross.png"'
+                    + ' alt="x"'
+                    + ' class="crossArea__img"'
+                    + ' width="15px"'
+                    + ' height="15px">';
+
+                newClose.setAttribute("onclick", "newUndoAdd(this.parentNode)");
+                newCardField.appendChild(newClose);
+                newCol.className = 'column columns__column';
+                newCol.appendChild(newCardField);
+                this.parentNode.parentNode.insertBefore(newCol, this.parentNode);
+            }
+    </script>
+    <script language="JavaScript" type="text/javascript">
+        var addButtons = document.getElementsByClassName("addCardField__button");
+        for (var i = 0; i < addButtons.length; i++) {
+            addButtons[i].onclick =
+                function () {
+                    const inputText = this.previousElementSibling.value;
+                    var newCard = document.createElement('div');
+                    newCard.className = "card content__card";
+                    newCard.innerHTML = inputText;
+
+                    this.parentNode.previousElementSibling.appendChild(newCard);
+
+                    this.parentNode.style.display = "none";
+                    this.previousElementSibling.value = '';
+                    this.parentNode.nextElementSibling.style.display = "block";
+                }
+        }
+    </script>
+    <script type="text/javascript">
+        var crossers = document.getElementsByClassName("crossArea");
+        for (var i = 0; i < crossers.length; i++) {
+            crossers[i].onclick =
+                function () {
+                    var addNew = this.parentNode.nextElementSibling;
+                    addNew.style.display = 'block';
+                    var addField = this.parentNode;
+                    addField.style.display = 'none';
+                    addField.firstElementChild.value = ''
+                }
+        }
+    </script>
+    <script type="text/javascript">
+        var addColls = document.getElementsByClassName("addColField__button");
+        console.log(addColls);
+        for (var i = 0; i < addColls.length; i++) {
+            addColls[i].onclick =
+                function () {
+                    console.log('add')
+
+                }
+        }
+    </script>
+    <script language="JavaScript" type="text/javascript">
+        DragManager.onDragCancel = function (dragObject) {
+            dragObject.avatar.rollback();
+        };
+        DragManager.onDragEnd = function (dragObject, dropElem) {
+            const elem = dragObject.elem;
+            elem.style = '';
+            dropElem.firstElementChild.appendChild(elem);
+        };
+    </script>
+</div>
+
+</body>
+</html>

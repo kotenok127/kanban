@@ -1,0 +1,167 @@
+html {
+    background-image: url(mlechnyy-put-noch-zvezdy-nebo-3839.jpg);
+    height: 100%;
+    width: 100%;
+    background-color: #FFFFFF;
+    background-size: cover;
+}
+
+.addCardField {
+    display: none;
+}
+
+.addCardField__button, .addColField__button {
+    padding: 0;
+    width: 152px;
+    height: 30px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    border-width: 0;
+    margin-left: 12px;
+    margin-top: 8px;
+    line-height: 19px;
+    color: #FFFFFF;
+
+    background-color: #39C071;
+    border-radius: 3px;
+}
+
+.crossArea {
+    position: relative;
+    display: inline;
+    padding: 0;
+    margin-left: 81px;
+    border-width: 0;
+}
+
+/*input.break {
+	word-wrap: break-word;
+	word-break: break-all;
+}*/
+
+.addCardField__input::placeholder, .addColField__input::placeholder {
+    color: #B8B9BB;
+    
+
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 19px;
+
+
+}
+
+.addCardField__input, .addColField__input {
+    margin-left: 12px;
+    margin-top: 8px;
+    padding: 8px 6px 8px 12px;
+    width: 230px;
+    height: 38px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 19px;
+
+    background: #FFFFFF;
+    box-shadow: 0 1px 4px rgba(9, 45, 66, 0.25);
+    border-radius: 3px;
+    border-width: 0;
+}
+
+.card.shadow {
+    width: 248px;
+    height: 35px;
+    padding: 0;
+    background: #C9D2D9;
+    border-radius: 3px;
+}
+
+.column {
+    padding-bottom: 12px;
+    float: left;
+}
+
+.column, .column_new {
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 272px;
+    min-height: 43px;
+    left: 20px;
+    top: 20px;
+    margin-right: 12px;
+    background-color: #DFE3E6;
+    border-radius: 3px;
+}
+
+.header {
+    width: 248px;
+    height: 19px;
+    left: 32px;
+    top: 28px;
+
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.card {
+    top: 12px;
+    padding: 8px 8px 8px 12px;
+    margin-bottom: 8px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px rgba(9, 45, 66, 0.25);
+    border-radius: 3px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    overflow-wrap: break-word;
+    font-size: 13px;
+    line-height: 19px;
+    min-height: 19px;
+    color: #000000;
+}
+
+.addButton_img, .addColumn_img {
+    width: 15px;
+    height: 15px;
+    margin-left: 12px;
+}
+
+.addColumn {
+    display: inline-block;
+}
+
+.addButton, .addColumn {
+    margin-bottom: -12px;
+    border-width: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 19px;
+    width: 272px;
+    height: 43px;
+    color: #6B808C;
+}
+
+.addButton__text, .addColumn__text {
+    margin-left: 8px;
+    position: relative;
+    display: inline-block;
+}
+
+.content {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+}
