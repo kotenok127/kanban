@@ -83,7 +83,7 @@
                 //addAction.bind.this
                 function () {
                     this.style.display = "none";
-                    console.log(this.parentNode.previousElementSibling);
+                    // console.log(this.parentNode.previousElementSibling);
                     this.previousElementSibling.style.display = "block";
                 }
         }
@@ -91,13 +91,13 @@
     <script language="JavaScript" type="text/javascript">
         function newCardAdd(elem) {
             elem.style.display = "none";
-            console.log(elem.parentNode.previousElementSibling);
+            // console.log(elem.parentNode.previousElementSibling);
             elem.previousElementSibling.style.display = "block";
         }
 
         function newClose(elem) {
             var addNew = elem.parentNode.nextElementSibling;
-            addNew.style.display = 'block';
+            addNew.style.display = 'flex';
             var addField = elem.parentNode;
             addField.style.display = 'none';
             addField.firstElementChild.value = ''
@@ -113,11 +113,11 @@
 
             elem.parentNode.style.display = "none";
             elem.previousElementSibling.value = '';
-            elem.parentNode.nextElementSibling.style.display = "block";
+            elem.parentNode.nextElementSibling.style.display = "flex";
         }
 
         function f(elem) {
-        	console.log(elem)
+        	// console.log(elem)
             const inputText = elem.previousElementSibling.value;
             newContent = document.createElement('div');
             newHeader = document.createElement('header');
@@ -147,7 +147,7 @@
                 + ' width="15px"'
                 + ' height="15px">';
 
-            newClose.setAttribute("onclick", "newClose(this)");
+            newClose.setAttribute("onclick", "newUndoAddCard(this)");
             newField.appendChild(newClose);
 
             col.appendChild(newField);
@@ -161,12 +161,18 @@
             col.appendChild(newAddNewCard)
 
         }
+        function newUndoAddCard(elem) {
+            var addNew = elem.parentNode.nextElementSibling;
+            addNew.style.display = 'flex';
+            // console.log(addNew)
+            var addField = elem.parentNode;
+            // console.log(addField)
+            addField.style.display = 'none';
+            addField.firstElementChild.value = ''
+        }
 
         function newUndoAdd(elem) {
             var addField = elem.parentNode;
-            // console.log(addField)
-            console.log(elem);
-            console.log(addField);
             addField.style.display = 'none';
             addField.firstElementChild.value = ''
         }
@@ -213,7 +219,7 @@
 
                     this.parentNode.style.display = "none";
                     this.previousElementSibling.value = '';
-                    this.parentNode.nextElementSibling.style.display = "block";
+                    this.parentNode.nextElementSibling.style.display = "flex";
                 }
         }
     </script>
@@ -223,21 +229,10 @@
             crossers[i].onclick =
                 function () {
                     var addNew = this.parentNode.nextElementSibling;
-                    addNew.style.display = 'block';
+                    addNew.style.display = 'flex';
                     var addField = this.parentNode;
                     addField.style.display = 'none';
                     addField.firstElementChild.value = ''
-                }
-        }
-    </script>
-    <script type="text/javascript">
-        var addColls = document.getElementsByClassName("addColField__button");
-        console.log(addColls);
-        for (var i = 0; i < addColls.length; i++) {
-            addColls[i].onclick =
-                function () {
-                    console.log('add')
-
                 }
         }
     </script>
